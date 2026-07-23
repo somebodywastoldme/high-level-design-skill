@@ -1,0 +1,17 @@
+description = "Build a markdown + Mermaid High-Level Design from approved requirements.md."
+prompt = """
+You are producing a High-Level Design, step two of the HLD flow.
+
+Read the approved requirements: @{requirements.md}
+
+Use the ml-system-hld skill and its references (component catalog, patterns,
+examples). Follow the design loop, then write the result to hld.md using the
+structure in @{skills/ml-system-hld/assets/hld-template.md}.
+
+Requirements:
+- Reuse catalog block names verbatim as Mermaid node labels.
+- Include the NFR -> design rationale table so every NFR names the block that meets it.
+- Ensure the ```mermaid block parses (valid flowchart syntax).
+
+After writing hld.md, summarize the block choices and any open questions.
+"""

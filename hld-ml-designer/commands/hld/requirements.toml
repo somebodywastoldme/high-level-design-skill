@@ -1,0 +1,17 @@
+description = "Draft functional + non-functional requirements for an ML system from a one-line task."
+prompt = """
+You are helping produce requirements for an ML/AI system, step one of a two-step HLD flow.
+
+Task from the user: {{args}}
+
+Use the ml-system-hld skill. Follow the structure in
+@{skills/ml-system-hld/assets/requirements-template.md} exactly.
+
+Draft concrete, sensible Functional and Non-Functional Requirements for the task
+above. Make reasonable assumptions for any missing NFR (latency, throughput,
+freshness, access control) and mark each assumption with "(assumption)".
+
+Write the result to a file named requirements.md in the current working directory,
+then show it to me and ask me to confirm or edit before we design. Do not design the
+architecture yet.
+"""
