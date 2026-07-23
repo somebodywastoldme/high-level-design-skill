@@ -27,11 +27,19 @@ estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
    the matching domain; do not load examples by default.
 4. Choose one baseline architecture that best fits the drivers, and at most two
    conditional alternatives, each tied to a specific trigger or trade-off.
-5. Compose the diagram from catalogued logical components. Give every box a
+5. Diagram planning: silently select one primary flow, classify blocks into
+   layers, order the happy path, limit exceptions, remove implementation-only
+   edges, split above 16 logical blocks, and inspect backward or crossing edges
+   before writing Mermaid. Use 3-5 subgraphs, keep the happy path left-to-right,
+   place exceptions below and supporting services above or below, and keep
+   storage next to its owner. Avoid Event Bus or Queue stars; boxes normally
+   have one or two outgoing edges, and edge labels identify only material
+   decisions or mode changes.
+6. Compose the diagram from catalogued logical components. Give every box a
    purpose and show only the responsibilities and interfaces needed for the HLD.
-6. Apply the [architecture review](references/architecture-review.md) before
+7. Apply the [architecture review](references/architecture-review.md) before
    writing `hld.md`; resolve gaps, record assumptions, or add open questions.
-7. Write the HLD with the baseline, conditional alternatives, claim ledger,
+8. Write the HLD with the baseline, conditional alternatives, claim ledger,
    rationale, risks, and questions that affect scope, estimate, or architecture.
 
 ## Reference selection

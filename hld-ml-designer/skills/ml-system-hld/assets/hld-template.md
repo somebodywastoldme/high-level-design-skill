@@ -9,6 +9,11 @@
 <One baseline using logical component names only; explain the pattern and architectural drivers>
 
 ## 4. Architecture diagram
+### Diagram composition
+Primary flow: <left-to-right architectural story>
+
+Focused second view (only if needed): <reason and scope, or Not needed>
+
 ```mermaid
 flowchart LR
     Input[Logical input] --> Processing[Logical processing component]
