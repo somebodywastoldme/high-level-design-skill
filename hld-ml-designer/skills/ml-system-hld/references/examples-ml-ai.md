@@ -143,13 +143,15 @@ flowchart LR
 A platform needs to resize uploaded product images, screen them for
 unacceptable content, and either publish them or route them to audit. The
 source material identifies categories such as nudity, violence, and prohibited
-symbols, and calls for an automated decision within ten seconds of upload.
+symbols.
 
 **Baseline:** unchecked uploads could be published, exposing users and the
 platform to policy and safety risk.
 
 ### Material assumptions
 
+- **Assumption to confirm:** an automated publish-or-review decision is needed
+  within ten seconds of upload.
 - Policy owners define the prohibited-content taxonomy and decision thresholds.
 - A staffed review process can adjudicate uncertain, contested, or failed
   automated decisions.
@@ -191,7 +193,7 @@ flowchart LR
 
 - Which harms can be blocked automatically, and which always require a human
   decision?
-- Is the stated automated-decision time measured before or after image
+- Is the target of ten seconds for the automated decision measured before or after image
   transformation, and what is the expected upload volume profile?
 - What appeal, audit, and notification experience is required for rejected
   images?
@@ -209,15 +211,16 @@ flowchart LR
 
 A cashier-less store wants to recognize products added to or removed from a
 cart using store and cart camera images, maintain cart contents by cart number,
-and charge at exit without a checkout scan. The source material requires the
-cart update to occur within three seconds of the product action and calls for
-human review of low-confidence detections.
+and charge at exit without a checkout scan. The source material calls for human
+review of low-confidence detections.
 
 **Baseline:** conventional checkout queues create friction, while unverified
 automated cart updates could create billing errors.
 
 ### Material assumptions
 
+- **Assumption to confirm:** the cart state must update within three seconds of
+  a product action.
 - Cart identifiers can be reliably associated with the relevant camera events.
 - The product catalog contains enough visual and product metadata to resolve a
   detected item.
@@ -256,8 +259,8 @@ flowchart LR
 
 ### Discovery questions and risks
 
-- What detection quality and resolution time are acceptable before a shopper
-  reaches the exit?
+- Does the target of three seconds for a cart update apply to all detections, and what
+  quality and resolution time are acceptable before a shopper reaches the exit?
 - How are overlapping shoppers, occlusions, returns, and product substitutions
   handled?
 - What are the privacy, retention, and incident-investigation requirements for
@@ -277,8 +280,7 @@ flowchart LR
 Employees need English-language answers and project examples grounded in
 corporate documents, while marketing users need to create images from text
 with style and format controls. The source material requires per-user document
-access enforcement, availability of newly added documents within a day, and
-support for at least five simultaneous chatbot users without quality loss.
+access enforcement and availability of newly added documents within a day.
 
 **Baseline:** employees search corporate material manually, and marketing
 users create imagery in a manual editor; neither path provides a governed,
@@ -286,6 +288,8 @@ shared AI experience.
 
 ### Material assumptions
 
+- **Assumption to confirm:** the knowledge-assistant experience must support at
+  least five simultaneous chatbot users without quality loss.
 - Document identities, access rules, and authoritative sources are available
   to the indexing and retrieval paths.
 - Data-handling policy permits the selected model-provider boundary, or an
@@ -330,7 +334,7 @@ flowchart LR
   evidence must accompany an answer?
 - Which prompts, documents, and generated images may cross the model-provider
   boundary, and what logging or retention rules govern them?
-- Is the stated concurrent-user requirement shared across chat and image work,
+- Does the five simultaneous chatbot users target apply across chat and image work,
   and what user experience is acceptable for delayed image completion?
 
 ### Optional alternatives
