@@ -1,6 +1,6 @@
 {
   "name": "hld-ml-designer",
   "version": "0.1.0",
-  "description": "Generate ML/AI system High-Level Designs (markdown + Mermaid) from functional and non-functional requirements.",
+  "description": "Generate vendor-neutral Presales Lite High-Level Designs for ML/AI and general software/data systems, with Markdown and Mermaid output.",
   "contextFileName": "GEMINI.md"
 }

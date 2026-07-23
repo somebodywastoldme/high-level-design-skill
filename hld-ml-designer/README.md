@@ -1,6 +1,8 @@
 # hld-ml-designer
 
-A Gemini CLI extension that turns a one-line ML task into High-Level Design documentation (markdown + Mermaid diagram) by reusing a catalog of standard building blocks. Write a functional requirement in plain English, and get back a complete architecture with rationale—all in two commands.
+A vendor-neutral Gemini CLI extension that turns a one-line product or system need into a Presales Lite High-Level Design (HLD) in Markdown with a Mermaid diagram. It supports ML/AI and general software/data systems: API/SaaS, integration, data, enterprise workflow, reliability, and ML/AI.
+
+The skill separates confirmed inputs from assumptions and critical discovery questions, so the design remains useful without presenting unknowns as facts. Its diagrams are logical HLDs: they describe responsibilities and flows without selecting a cloud vendor or deployment-level implementation.
 
 ## Install
 
@@ -25,7 +27,13 @@ You should see `hld-ml-designer` in the output.
 
 ## Usage
 
-A two-step flow: first draft requirements, then design the architecture.
+A two-command workflow: first capture the requirements, then create the Presales Lite HLD.
+
+For example:
+```text
+/hld:requirements "A B2B platform receives contracts, validates them, routes exceptions to specialists, and integrates with a CRM."
+/hld:design
+```
 
 **Step 1: Generate requirements from a one-line task**
 
@@ -34,9 +42,10 @@ From your working directory, run:
 /hld:requirements "a system that moderates uploaded product images for unsafe content at 2000 images per minute"
 ```
 
-This writes `requirements.md` in your current directory. Open it, review the assumptions, and edit as needed. The file should contain:
-- **Functional Requirements** (what the system does)
-- **Non-Functional Requirements** (latency, throughput, freshness, access control, etc.)
+This writes `requirements.md` in your current directory. Open it, confirm the inputs, and resolve the assumptions and critical questions before proceeding. The file distinguishes:
+- **Confirmed inputs** (facts supplied in the prompt)
+- **Assumptions** (explicit, reviewable working hypotheses)
+- **Critical questions** (discovery items that could materially change the design)
 
 **Step 2: Design the High-Level Architecture**
 
@@ -45,21 +54,29 @@ Once `requirements.md` is approved, run:
 /hld:design
 ```
 
-This reads `requirements.md` from your current directory and writes `hld.md`, which contains:
-- A **Mermaid flowchart** showing data flow (ingestion on the left, serving on the right)
-- A **Components table** mapping each NFR to the canonical block that satisfies it
-- **Open questions** section for any ambiguities
+This reads `requirements.md` from your current directory and writes `hld.md`, a Presales Lite HLD with all eight required sections. It includes a vendor-neutral Mermaid logical diagram, a baseline design, meaningful trade-offs, discovery questions, and no more than two alternatives.
 
 **Note:** Always run these commands from the working directory where `requirements.md` and `hld.md` live.
 
 ## What you get
 
-`hld.md` is markdown with an embedded Mermaid diagram. The diagram shows:
+`hld.md` is Markdown with an embedded Mermaid diagram. The diagram is a logical HLD and shows:
 - **Left side:** data ingestion pipeline (inbound events → processing → store)
 - **Right side:** serving pipeline (request → orchestration → model/retrieval → response)
 - **Blocks:** each is a canonical component from the 12-block catalog (e.g., `Queue`, `Cache`, `Vector DB`, `Model / Embeddings`)
 
 Paste the Mermaid block into an IDE, GitHub wiki, or https://mermaid.live to render it visually. The Components table explains why each block was chosen.
+
+## Manual smoke test
+
+Gemini CLI is required for this acceptance test and is not run as part of the local structural checks. After installing or refreshing the extension, run:
+
+```text
+/hld:requirements "A B2B platform receives contracts, validates them, routes exceptions to specialists, and integrates with a CRM."
+/hld:design
+```
+
+Check that `requirements.md` distinguishes confirmed inputs, assumptions, and critical questions without inventing a numeric SLA. Check that `hld.md` contains all eight Presales Lite sections, uses vendor-neutral logical components in its Mermaid diagram, names a baseline and at least one meaningful trade-off and discovery questions, includes at most two alternatives, and contains no cloud-vendor or deployment-level details.
 
 ## The 12-block catalog at a glance
 
