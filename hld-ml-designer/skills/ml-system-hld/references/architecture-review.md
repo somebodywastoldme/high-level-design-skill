@@ -33,6 +33,7 @@ unknowns, risks, or questions; do not silently fill them in.
 
 ## Visual composition
 
+- [ ] Mermaid is the only final diagram format.
 - [ ] The diagram uses 3-5 subgraphs to group the architectural layers.
 - [ ] The primary happy path reads left-to-right.
 - [ ] Exception paths are placed below the primary flow and remain limited.
@@ -42,8 +43,8 @@ unknowns, risks, or questions; do not silently fill them in.
 - [ ] Event Bus or Queue components do not form star-shaped hubs; boxes normally
   have one or two outgoing edges.
 - [ ] Long backward loops and crossing edges have been removed or simplified.
-- [ ] A split into focused views is justified when the diagram exceeds 16 logical
-  blocks or has more than two exception branches.
+- [ ] A second focused Mermaid view is present only when the primary HLD has >16
+  logical blocks or >2 exception branches; otherwise it is omitted.
 
 ## Presales and readability
 

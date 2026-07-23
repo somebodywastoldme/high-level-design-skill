@@ -10,9 +10,11 @@
 
 ## 4. Architecture diagram
 ### Diagram composition
+Final diagram format: Mermaid only.
+
 Primary flow: <left-to-right architectural story>
 
-Focused second view (only if needed): <reason and scope, or Not needed>
+Focused second Mermaid view: <permitted only when the primary HLD has >16 logical blocks or >2 exception branches; otherwise omit>
 
 ```mermaid
 flowchart LR

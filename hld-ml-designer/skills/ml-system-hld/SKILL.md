@@ -29,12 +29,14 @@ estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
    conditional alternatives, each tied to a specific trigger or trade-off.
 5. Diagram planning: silently select one primary flow, classify blocks into
    layers, order the happy path, limit exceptions, remove implementation-only
-   edges, split above 16 logical blocks, and inspect backward or crossing edges
-   before writing Mermaid. Use 3-5 subgraphs, keep the happy path left-to-right,
-   place exceptions below and supporting services above or below, and keep
-   storage next to its owner. Avoid Event Bus or Queue stars; boxes normally
-   have one or two outgoing edges, and edge labels identify only material
-   decisions or mode changes.
+   edges, and inspect backward or crossing edges before writing Mermaid. Mermaid
+   is the only final diagram format. Use one primary Mermaid HLD view; add a
+   second focused Mermaid view only when the primary HLD has >16 logical blocks
+   or >2 exception branches. Use 3-5 subgraphs, keep the happy
+   path left-to-right, place exceptions below and supporting services above or
+   below, and keep storage next to its owner. Avoid Event Bus or Queue stars;
+   boxes normally have one or two outgoing edges, and edge labels identify only
+   material decisions or mode changes.
 6. Compose the diagram from catalogued logical components. Give every box a
    purpose and show only the responsibilities and interfaces needed for the HLD.
 7. Apply the [architecture review](references/architecture-review.md) before
