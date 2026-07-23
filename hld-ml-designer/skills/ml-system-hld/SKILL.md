@@ -1,36 +1,63 @@
 ---
 name: ml-system-hld
-description: Use when designing a high-level architecture (HLD) for an ML or AI system — search, recommendation, content moderation, computer vision, RAG or GenAI. Turns functional and non-functional requirements into a markdown design with a Mermaid diagram by reusing a catalog of standard building blocks. Triggers on "high-level design", "HLD", "system design", "architecture", "ML system", "pre-sale design".
+description: Use when creating presales architecture, solution design, system design, or high-level design (HLD) for ML or AI systems.
 ---
 
 # ML System High-Level Design
 
-Produce an HLD as **markdown + a Mermaid diagram** by matching requirements to
-reusable blocks. Never invent bespoke boxes when a catalog block fits.
+Create a decision-ready presales HLD: a clear baseline architecture, bounded
+alternatives, explicit uncertainty, and questions that materially affect scope,
+estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
 
 ## Inputs and outputs
-- Input: an approved `requirements.md` (shape: `assets/requirements-template.md`).
-- Output: `hld.md` (shape: `assets/hld-template.md`).
 
-## Design loop
-1. **Read the requirements.** Extract: task type (search / recsys / moderation /
-   GenAI-RAG / real-time CV), throughput (QPS or items/min), latency budget (p95),
-   data freshness, human-in-the-loop need, access control.
-2. **Pick the master pattern** from `references/patterns.md` — decide if you need an
-   offline Indexing/Ingestion pipeline plus an online Serving pipeline (usually yes),
-   and pick the closest archetype skeleton.
-3. **Decompose into catalog blocks** from `references/component-catalog.md`. Map each
-   NFR to a block: tight p95 → `Cache` + `Load Balancer`; interval freshness →
-   `Scheduler`; async/bursty ingest → `Queue`; similarity → `Vector DB`; shared
-   features → `Feature Store`; quality → `Re-ranking service`; low confidence →
-   `DLQ → Review`; per-user access → `Rights check`; external LLM → `Model API Proxy`.
-4. **Assemble the Mermaid diagram**: ingestion left→right into the store; request
-   enters from the right through `Load Balancer` → `Workflow Manager` → downstream.
-   Use canonical block names as node labels.
-5. **Justify**: fill the NFR→design table so every NFR names the block that satisfies it.
-6. **Fill `hld.md`** from the output template. Flag anything ambiguous under Open questions.
+- Read `requirements.md` before designing.
+- Produce `hld.md` using the expected project template when one is available.
+- Treat missing requirements as questions or assumptions, never as facts.
 
-## Guidance
-- Study `references/examples.md` before designing — reuse its shape and vocabulary.
-- Prefer fewer, standard blocks. Only add a non-catalog component with a one-line reason.
-- Keep the diagram readable: group ingestion and serving; avoid crossing edges where possible.
+## Workflow
+
+1. Classify the drivers: business outcome, users and journeys, functional scope,
+   scale and latency, data and freshness, integrations, security and compliance,
+   operations, and delivery constraints.
+2. Create a claim ledger. Label every material claim **Confirmed**,
+   **Assumption**, or **Unknown**. Do not invent exact performance, cost, capacity,
+   or delivery values.
+3. Select the domain reference that best fits the request. Load examples only for
+   the matching domain; do not load examples by default.
+4. Choose one baseline architecture that best fits the drivers, and at most two
+   conditional alternatives, each tied to a specific trigger or trade-off.
+5. Compose the diagram from catalogued logical components. Give every box a
+   purpose and show only the responsibilities and interfaces needed for the HLD.
+6. Apply the [architecture review](references/architecture-review.md) before
+   writing `hld.md`; resolve gaps, record assumptions, or add open questions.
+7. Write the HLD with the baseline, conditional alternatives, claim ledger,
+   rationale, risks, and questions that affect scope, estimate, or architecture.
+
+## Reference selection
+
+Use these references directly:
+
+- [Component catalog](references/component-catalog.md) for logical components.
+- [Architecture review](references/architecture-review.md) before finalizing.
+- [Product integration patterns](references/patterns-product-integration.md) for
+  product-facing integrations.
+- [Data reliability patterns](references/patterns-data-reliability.md) for data
+  movement, quality, and reliability.
+- [ML and AI patterns](references/patterns-ml-ai.md) for ML, AI, RAG, and model
+  serving systems.
+- [ML and AI examples](references/examples-ml-ai.md) only for matching ML or AI
+  domains.
+- [Enterprise examples](references/examples-enterprise.md) only for matching
+  enterprise domains.
+
+## HLD quality bar
+
+- Make the baseline traceable to the classified drivers and the claim ledger.
+- Prefer a readable diagram of 8-16 boxes. Group boxes as Client, Core,
+  Async-Data, and External where applicable; justify any larger diagram.
+- State ownership, external boundaries, and material failure or retry paths when
+  relevant.
+- Address security and observability when relevant to the drivers or risk.
+- Keep alternatives conditional and concise; do not present an unbounded option
+  list or implementation-level detail.
