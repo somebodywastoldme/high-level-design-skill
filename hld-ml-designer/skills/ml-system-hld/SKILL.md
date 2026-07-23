@@ -60,6 +60,8 @@ Use these references directly:
   domains.
 - [Enterprise examples](references/examples-enterprise.md) only for matching
   enterprise domains.
+- [Visual smoke example](references/visual-smoke-example.md) as a
+  visual-quality baseline when composing a diagram, not as a domain template.
 
 ## HLD quality bar
 
