@@ -1,6 +1,6 @@
 ---
 name: ml-system-hld
-description: Use when creating presales architecture, solution design, system design, or high-level design (HLD) for ML or AI systems.
+description: Use when creating vendor-neutral presales HLD or solution architecture for general software and data systems, including API/SaaS, integration, enterprise workflows, data platforms, and ML/AI.
 ---
 
 # ML System High-Level Design
