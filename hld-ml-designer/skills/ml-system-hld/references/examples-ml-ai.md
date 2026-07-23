@@ -4,6 +4,48 @@ These examples illustrate how to turn confirmed business inputs into a
 vendor-neutral high-level design. They distinguish source-backed inputs from
 assumptions that need confirmation during discovery.
 
+## Visual composition example
+
+- The primary answer path runs left-to-right from the employee request through
+  retrieval and the model provider to the grounded answer.
+- `Human Review` sits below the primary path as the exception route for a
+  response that needs approval before release.
+- `Audit Log` is a supporting service below the main flow, rather than a stop
+  on the answer path.
+- The only edge label marks the review decision; the other arrows use concise
+  node names to keep the diagram readable.
+- Document indexing, access-metadata refresh, and delivery-retry edges remain
+  in the data-flow prose so the diagram keeps one architectural story.
+
+```mermaid
+flowchart LR
+  subgraph clients["Clients & partners"]
+    employee["Employee"]
+  end
+  subgraph intake["Intake"]
+    edge["API Gateway / Edge"]
+    identity["Identity and access"]
+  end
+  subgraph processing["Core processing"]
+    assistant["Knowledge assistant"]
+    retrieve["Rights-filtered retrieval"]
+    vector[("Vector DB")]
+    proxy["Model API proxy"]
+    answer["Grounded answer"]
+    review["Human Review"]
+  end
+  subgraph support["Supporting services"]
+    audit["Audit Log"]
+  end
+  subgraph external["External systems"]
+    llm["Language model provider"]
+  end
+
+  employee --> edge --> identity --> assistant --> retrieve --> vector --> proxy --> llm --> answer
+  assistant --> audit
+  assistant -->|"requires review"| review --> answer
+```
+
 ## Example: Video search
 
 ### Scenario and confirmed inputs

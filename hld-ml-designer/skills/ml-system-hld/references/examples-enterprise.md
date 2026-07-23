@@ -5,6 +5,49 @@ logical high-level designs. They keep confirmed inputs separate from discovery
 assumptions and use conditional alternatives where a different fact would
 change the recommendation.
 
+## Visual composition example
+
+- The primary document path runs left-to-right from submission through intake,
+  validation, coverage, and case creation.
+- `Human Review` is below the claim-processing flow as the exception route for
+  incomplete or inconsistent documents.
+- `Audit Log` is a supporting service below the main flow, not a processing
+  stage that every decision must wait on.
+- The only edge label identifies the exception; concise node names describe
+  the routine path without extra labels.
+- Raw-document retention, retry handling, and notification edges remain in the
+  data-flow prose so this diagram stays focused on the primary story.
+
+```mermaid
+flowchart LR
+  subgraph client["Client & partner"]
+    submitter["User or partner"]
+  end
+  subgraph intake["Intake"]
+    edge["API Gateway / Edge"]
+    document["Document intake"]
+    queue["Queue"]
+  end
+  subgraph claims["Claim processing"]
+    workflow["Workflow manager"]
+    extract["Document extraction"]
+    validate["Validation"]
+    review["Human Review"]
+  end
+  subgraph support["Supporting services"]
+    audit["Audit Log"]
+  end
+  subgraph insurance["Core insurance"]
+    coverage["Coverage check"]
+    caseService["Case domain service"]
+    cases[("Operational database")]
+  end
+
+  submitter --> edge --> document --> queue --> workflow --> extract --> validate --> coverage --> caseService --> cases
+  workflow --> audit
+  validate -->|"exception"| review --> caseService
+```
+
 ## Example: B2B multi-tenant SaaS
 
 ### Scenario and confirmed inputs
