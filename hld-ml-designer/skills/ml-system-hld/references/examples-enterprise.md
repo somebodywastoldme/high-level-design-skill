@@ -29,13 +29,24 @@ flowchart LR
     queue["Queue"]
   end
   subgraph claims["Claim processing"]
-    workflow["Workflow manager"]
-    extract["Document extraction"]
-    validate["Validation"]
-    review["Human Review"]
+    direction TB
+    subgraph happyPath[" "]
+      direction LR
+      workflow["Workflow manager"]
+      extract["Document extraction"]
+      validate["Validation"]
+    end
+    subgraph exceptionPath[" "]
+      direction TB
+      review["Human Review"]
+    end
   end
   subgraph support["Supporting services"]
-    audit["Audit Log"]
+    direction TB
+    subgraph supportLayout[" "]
+      direction TB
+      audit["Audit Log"]
+    end
   end
   subgraph insurance["Core insurance"]
     coverage["Coverage check"]
@@ -46,6 +57,7 @@ flowchart LR
   submitter --> edge --> document --> queue --> workflow --> extract --> validate --> coverage --> caseService --> cases
   workflow --> audit
   validate -->|"exception"| review --> caseService
+  review ~~~ audit
 ```
 
 ## Example: B2B multi-tenant SaaS

@@ -27,15 +27,26 @@ flowchart LR
     identity["Identity and access"]
   end
   subgraph processing["Core processing"]
-    assistant["Knowledge assistant"]
-    retrieve["Rights-filtered retrieval"]
-    vector[("Vector DB")]
-    proxy["Model API proxy"]
-    answer["Grounded answer"]
-    review["Human Review"]
+    direction TB
+    subgraph happyPath[" "]
+      direction LR
+      assistant["Knowledge assistant"]
+      retrieve["Rights-filtered retrieval"]
+      vector[("Vector DB")]
+      proxy["Model API proxy"]
+      answer["Grounded answer"]
+    end
+    subgraph exceptionPath[" "]
+      direction TB
+      review["Human Review"]
+    end
   end
   subgraph support["Supporting services"]
-    audit["Audit Log"]
+    direction TB
+    subgraph supportLayout[" "]
+      direction TB
+      audit["Audit Log"]
+    end
   end
   subgraph external["External systems"]
     llm["Language model provider"]
@@ -44,6 +55,7 @@ flowchart LR
   employee --> edge --> identity --> assistant --> retrieve --> vector --> proxy --> llm --> answer
   assistant --> audit
   assistant -->|"requires review"| review --> answer
+  review ~~~ audit
 ```
 
 ## Example: Video search
