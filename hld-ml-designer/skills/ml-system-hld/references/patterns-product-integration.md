@@ -66,7 +66,8 @@ flowchart LR
 **Discovery questions:** What may complete later, how will callers observe status, and what is safe to retry or compensate?
 ```mermaid
 flowchart LR
-  requester["Requester"] --> domain["Core Domain Service"] --> queue["Queue"] --> workflow["Workflow Manager"] --> review["DLQ → Review"]
+  requester["Requester"] --> domain["Core Domain Service"] --> queue["Queue"] --> workflow["Workflow Manager"]
+  workflow -->|failure / exhausted retries| review["DLQ → Review"]
 ```
 
 ## Event-driven fan-out
@@ -94,7 +95,8 @@ flowchart LR
 **Discovery questions:** What is the authoritative process state, which steps can run in parallel, and where must a person approve or correct work?
 ```mermaid
 flowchart LR
-  requester["Requester"] --> workflow["Workflow Manager"] --> queue["Queue"] --> domain["Core Domain Service"] --> review["DLQ → Review"]
+  requester["Requester"] --> workflow["Workflow Manager"] --> queue["Queue"] --> domain["Core Domain Service"]
+  domain -->|failure / exception| review["DLQ → Review"]
 ```
 
 ## Saga
