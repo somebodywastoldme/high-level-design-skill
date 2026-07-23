@@ -4,8 +4,9 @@ You are helping produce requirements for an ML/AI system, step one of a two-step
 
 Task from the user: {{args}}
 
-Use the ml-system-hld skill. Follow the structure in
-@{skills/ml-system-hld/assets/requirements-template.md} exactly.
+Use the ml-system-hld skill: load it, then read its bundled requirements
+template at assets/requirements-template.md (inside the skill's own directory)
+and follow that structure exactly.
 
 Draft concrete, sensible Functional and Non-Functional Requirements for the task
 above. Make reasonable assumptions for any missing NFR (latency, throughput,

@@ -2,11 +2,13 @@ description = "Build a markdown + Mermaid High-Level Design from approved requir
 prompt = """
 You are producing a High-Level Design, step two of the HLD flow.
 
-Read the approved requirements: @{requirements.md}
+Read the approved requirements file from the current working directory: @{requirements.md}
 
-Use the ml-system-hld skill and its references (component catalog, patterns,
-examples). Follow the design loop, then write the result to hld.md using the
-structure in @{skills/ml-system-hld/assets/hld-template.md}.
+Use the ml-system-hld skill: load it and follow its design loop, reading its
+bundled references (references/component-catalog.md, references/patterns.md,
+references/examples.md) and its output template at assets/hld-template.md — all
+inside the skill's own directory. Then write the result to hld.md in the current
+working directory, following that output template's structure.
 
 Requirements:
 - Reuse catalog block names verbatim as Mermaid node labels.
