@@ -1,23 +1,31 @@
-# Requirements: <system name>
+# Discovery Brief: <system name>
+## 1. Business outcome and scope
+<confirmed outcome, scope, and logical system boundary>
 
-## Problem
-- **Business problem:** <what hurts today, target metric to move>
-- **ML problem:** <the ML task in one sentence>
+## 2. Confirmed inputs
+<facts explicitly provided by the stakeholder>
 
-## Functional Requirements (FR)
-- FR1: <capability — API / input / output / language / scenario>
-- FR2: ...
+## 3. Functional requirements
+<functional requirements derived only from confirmed inputs>
 
-## Non-Functional Requirements (NFR)
-| NFR | Target | Notes |
-|-----|--------|-------|
-| Latency (p95) | <e.g. < 300 ms> | |
-| Throughput | <e.g. 10,000 QPS / 2,000 items per minute> | |
-| Data freshness | <e.g. new items indexed within 1 h> | |
-| Availability | <e.g. 99.9%> | |
-| Access control | <e.g. per-user document access levels> | |
-| Cost / budget | <optional> | |
-| Privacy / compliance | <optional> | |
+## 4. Quality attributes / NFRs
+| Attribute | Confirmed target | Why it matters | Status |
+|---|---|---|---|
+| Latency | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Throughput/volume | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Freshness | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Availability | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Consistency | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Access control | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Privacy/compliance | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Integration constraints | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Cost/budget | <target or question> | <impact> | Confirmed / Assumption / Unknown |
 
-## Out of scope
-- <explicitly excluded>
+## 5. Assumptions to validate
+<unprovided details labeled as assumptions>
+
+## 6. Critical discovery questions
+<only the highest-impact unresolved questions>
+
+## 7. Out of scope
+Low-level design, cloud deployment topology, and cloud-vendor mapping.

@@ -1,19 +1,14 @@
-description = "Build a markdown + Mermaid High-Level Design from approved requirements.md."
+description = "Draft a Presales Lite ML-system high-level design from requirements."
 prompt = """
-You are producing a High-Level Design, step two of the HLD flow.
+Use only the requirements brief injected below as input:
 
-Read the approved requirements file from the current working directory: @{requirements.md}
+@{requirements.md}
 
-Use the ml-system-hld skill: load it and follow its design loop, reading its
-bundled references (references/component-catalog.md, references/patterns.md,
-references/examples.md) and its output template at assets/hld-template.md — all
-inside the skill's own directory. Then write the result to hld.md in the current
-working directory, following that output template's structure.
-
-Requirements:
-- Reuse catalog block names verbatim as Mermaid node labels.
-- Include the NFR -> design rationale table so every NFR names the block that meets it.
-- Ensure the ```mermaid block parses (valid flowchart syntax).
-
-After writing hld.md, summarize the block choices and any open questions.
+Activate the ml-system-hld skill and use its bundled assets/hld-template.md output
+contract with all eight sections in order. Produce Presales Lite only: use logical
+component names, preserve uncertainty, and do not produce LLD, cloud deployment
+topology, or cloud-vendor mapping. Select one baseline architecture and no more
+than two conditional alternatives. Explain the architecture pattern and its
+architectural drivers, including requirement-to-design rationale. Write hld.md in
+the current workspace.
 """

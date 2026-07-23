@@ -1,28 +1,32 @@
 # High-Level Design: <system name>
+## 1. Executive summary
+<Presales Lite recommendation, business outcome, and logical architecture pattern>
 
-## 1. Summary
-<2-3 sentences: what the system does and the master pattern used.>
+## 2. Confirmed inputs and assumptions
+<Separate confirmed inputs from assumptions and unknowns>
 
-## 2. Architecture diagram
+## 3. Recommended architecture
+<One baseline using logical component names only; explain the pattern and architectural drivers>
 
+## 4. Architecture diagram
 ```mermaid
 flowchart LR
-    %% ingestion (offline) on the left, serving (online) on the right
+    Input[Logical input] --> Processing[Logical processing component]
+    Processing --> Consumer[Logical consumer]
 ```
 
-## 3. Components
-| Component | Role | Which NFR it serves |
-|-----------|------|---------------------|
-| <block> | <one line> | <NFR> |
+## 5. Key decisions and trade-offs
+<Key decisions, drivers, and trade-offs>
 
-## 4. Data flow
-1. **Ingestion:** <step by step>
-2. **Serving:** <step by step>
+## 6. Requirements → design rationale
+| Requirement | Design mechanism | Status / caveat |
+|---|---|---|
+| <requirement> | <logical component or mechanism> | Confirmed / Assumption / Unknown |
 
-## 5. NFR → design rationale
-| NFR | Target | How the design meets it |
-|-----|--------|-------------------------|
-| <nfr> | <target> | <component/mechanism> |
+## 7. Discovery questions and risks
+<Highest-impact questions and risks affecting the recommendation>
 
-## 6. Open questions / risks
-- <thing to validate with the client>
+## 8. Optional alternatives
+| Alternative | Prefer it when | Trade-off |
+|---|---|---|
+| <conditional alternative; include at most two> | <condition> | <trade-off> |

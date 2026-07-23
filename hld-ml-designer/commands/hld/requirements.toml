@@ -1,18 +1,14 @@
-description = "Draft functional + non-functional requirements for an ML system from a one-line task."
+description = "Draft a Presales Lite ML-system discovery brief from a one-line task."
 prompt = """
-You are helping produce requirements for an ML/AI system, step one of a two-step HLD flow.
-
 Task from the user: {{args}}
 
-Use the ml-system-hld skill: load it, then read its bundled requirements
-template at assets/requirements-template.md (inside the skill's own directory)
-and follow that structure exactly.
+Activate the ml-system-hld skill and use its bundled output contract at
+assets/requirements-template.md. Follow the seven-section structure exactly.
+Capture only supplied facts as Confirmed. Label missing timing, cost, scale,
+retention, security, and model details as Assumption or Unknown. Ask only the
+highest-impact questions. Use logical component names only.
 
-Draft concrete, sensible Functional and Non-Functional Requirements for the task
-above. Make reasonable assumptions for any missing NFR (latency, throughput,
-freshness, access control) and mark each assumption with "(assumption)".
-
-Write the result to a file named requirements.md in the current working directory,
-then show it to me and ask me to confirm or edit before we design. Do not design the
-architecture yet.
+Produce Presales Lite only: no LLD, cloud deployment topology, or cloud-vendor
+mapping. Write requirements.md in the current workspace and stop before
+architecture design.
 """
