@@ -169,8 +169,9 @@ safe?
 ```mermaid
 flowchart LR
   requester["Requester"] --> edge["API Gateway / Edge"] --> workflow["Workflow Manager"] --> agent["Agent service"]
-  agent --> policy["Policy / Rules Service"] --> tools["External tools"]
-  agent --> domain["Core Domain Service"]
-  workflow --> audit["Audit Log"]
+  agent -->|"decision / tool request"| policy["Policy / Rules Service"] --> tools["External tools"]
+  policy -->|"approved state change"| domain["Core Domain Service"]
+  agent -->|"decision"| audit["Audit Log"]
+  tools -->|"action result"| audit
   agent -->|"policy exception or approval"| human["Human escalation"]
 ```
