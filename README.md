@@ -6,17 +6,14 @@ The skill separates confirmed inputs from assumptions and critical discovery que
 
 ## Install
 
-Choose one:
-
-**Option 1: Clone and install**
+Install directly from GitHub:
 ```bash
-git clone <repo-url> && cd hld-ml-designer
-gemini extensions install ./hld-ml-designer
+gemini extensions install https://github.com/somebodywastoldme/high-level-design-skill
 ```
 
-**Option 2: Copy into your extensions folder**
+For a local development checkout instead:
 ```bash
-cp -r hld-ml-designer ~/.gemini/extensions/
+gemini extensions install /path/to/high-level-design-skill
 ```
 
 Verify it loaded:
@@ -24,6 +21,12 @@ Verify it loaded:
 gemini extensions list
 ```
 You should see `hld-ml-designer` in the output.
+
+To receive a newer version after it is pushed to GitHub, restart Gemini CLI and
+run:
+```bash
+gemini extensions update --all
+```
 
 ## Usage
 
@@ -78,9 +81,10 @@ Gemini CLI is required for this acceptance test and is not run as part of the lo
 
 Check that `requirements.md` distinguishes confirmed inputs, assumptions, and critical questions without inventing a numeric SLA. Check that `hld.md` contains all eight Presales Lite sections, uses vendor-neutral logical components in its Mermaid diagram, names a baseline and at least one meaningful trade-off and discovery questions, includes at most two alternatives, and contains no cloud-vendor or deployment-level details.
 
-## The 12-block catalog at a glance
+## Component catalog at a glance
 
-Every HLD reuses these standard building blocks:
+Every HLD combines standard ML/AI and enterprise logical components. The core
+ML/AI blocks include:
 
 - **Load Balancer** — Distribute incoming requests across serving replicas; single entry point.
 - **Workflow Manager** — Orchestrate a request end-to-end, calling downstream services and assembling the response.
