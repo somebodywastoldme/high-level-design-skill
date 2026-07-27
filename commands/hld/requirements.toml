@@ -1,14 +1,23 @@
-description = "Draft a Presales Lite ML-system discovery brief from a one-line task."
+description = "Run an interactive discovery interview, then draft the requirements brief."
 prompt = """
-Task from the user: {{args}}
+Fuzzy task from the user: {{args}}
 
-Activate the ml-system-hld skill and use its bundled output contract at
-assets/requirements-template.md. Follow the seven-section structure exactly.
-Capture only supplied facts as Confirmed. Label missing timing, cost, scale,
-retention, security, and model details as Assumption or Unknown. Ask only the
-highest-impact questions. Use logical component names only.
+Activate the ml-system-hld skill. Do NOT write any file yet. Conduct the
+interactive discovery interview defined in
+skills/ml-system-hld/references/discovery-interview.md:
+
+- Ask one question at a time across the six-category frame, offering concrete
+  options plus a "Don't know / not important yet" option.
+- Label every answer Confirmed, Assumption, or Unknown. Never mark anything
+  Confirmed unless the user stated it in their own words. Speak every Assumption
+  aloud so the user can correct it.
+- After each category, report "Covered N/6" and offer to stop early.
+
+When the interview ends, render the full requirements.md draft in chat using
+assets/requirements-template.md, with Confirmed, Assumption, and Unknown items
+clearly separated. Write requirements.md in the current workspace ONLY after the
+user explicitly approves the draft.
 
 Produce Presales Lite only: no LLD, cloud deployment topology, or cloud-vendor
-mapping. Write requirements.md in the current workspace and stop before
-architecture design.
+mapping. Use logical component names only. Stop before architecture design.
 """

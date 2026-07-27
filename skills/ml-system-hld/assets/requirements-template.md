@@ -1,9 +1,15 @@
 # Discovery Brief: <system name>
+
+> **Claim ledger legend.** Every item below traces to a discovery-interview
+> answer. **Confirmed** = stated by the stakeholder. **Assumption** = inferred,
+> pending confirmation. **Unknown** = unresolved, tracked as an open question.
+> Nothing is Confirmed without the stakeholder's own words.
+
 ## 1. Business outcome and scope
 <confirmed outcome, scope, and logical system boundary>
 
 ## 2. Confirmed inputs
-<facts explicitly provided by the stakeholder>
+<facts explicitly provided by the stakeholder — all **Confirmed**>
 
 ## 3. Functional requirements
 <functional requirements derived only from confirmed inputs>
@@ -22,10 +28,10 @@
 | Cost/budget | <target or question> | <impact> | Confirmed / Assumption / Unknown |
 
 ## 5. Assumptions to validate
-<unprovided details labeled as assumptions>
+<inferred details labeled **Assumption**, each stated for the stakeholder to confirm>
 
 ## 6. Critical discovery questions
-<only the highest-impact unresolved questions>
+<unresolved items labeled **Unknown**, phrased as the highest-impact open questions>
 
 ## 7. Out of scope
 Low-level design, cloud deployment topology, and cloud-vendor mapping.

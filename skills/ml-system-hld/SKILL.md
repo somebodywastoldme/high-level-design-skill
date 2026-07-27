@@ -20,7 +20,8 @@ estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
 1. Classify the drivers: business outcome, users and journeys, functional scope,
    scale and latency, data and freshness, integrations, security and compliance,
    operations, and delivery constraints.
-2. Create a claim ledger. Label every material claim **Confirmed**,
+2. Run the [discovery interview](references/discovery-interview.md) to build the
+   claim ledger interactively. Label every material claim **Confirmed**,
    **Assumption**, or **Unknown**. Do not invent exact performance, cost, capacity,
    or delivery values.
 3. Select the domain reference that best fits the request. Load examples only for
@@ -48,6 +49,8 @@ estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
 
 Use these references directly:
 
+- [Discovery interview](references/discovery-interview.md) to run the interactive
+  requirements interview before writing `requirements.md`.
 - [Component catalog](references/component-catalog.md) for logical components.
 - [Architecture review](references/architecture-review.md) before finalizing.
 - [Product integration patterns](references/patterns-product-integration.md) for
