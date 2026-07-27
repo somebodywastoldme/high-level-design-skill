@@ -40,6 +40,9 @@ estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
    material decisions or mode changes.
 6. Compose the diagram from catalogued logical components. Give every box a
    purpose and show only the responsibilities and interfaces needed for the HLD.
+   Derive edges from each component's Typical interactions in the catalog rather
+   than freehand, then screen the diagram with the
+   [anti-pattern catalog](references/antipatterns.md).
 7. Apply the [architecture review](references/architecture-review.md) before
    writing `hld.md`; resolve gaps, record assumptions, or add open questions.
 8. Write the HLD with the baseline, conditional alternatives, claim ledger,
@@ -53,6 +56,8 @@ Use these references directly:
   requirements interview before writing `requirements.md`.
 - [Component catalog](references/component-catalog.md) for logical components.
 - [Architecture review](references/architecture-review.md) before finalizing.
+- [Anti-pattern catalog](references/antipatterns.md) to screen diagram topology
+  for known bad arrangements before finalizing `hld.md`.
 - [Product integration patterns](references/patterns-product-integration.md) for
   product-facing integrations.
 - [Data reliability patterns](references/patterns-data-reliability.md) for data
