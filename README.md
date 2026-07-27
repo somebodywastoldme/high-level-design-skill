@@ -28,6 +28,29 @@ run:
 gemini extensions update --all
 ```
 
+## Use with Claude Code
+
+The same skill works in Claude Code as a plugin named `hld`. Add this repository
+as a plugin marketplace, then install the plugin:
+
+```bash
+/plugin marketplace add somebodywastoldme/high-level-design-skill
+/plugin install hld@hld-designer
+```
+
+This gives you the same two commands as the Gemini version — `/hld:requirements`
+and `/hld:design` — backed by the same shared skill. The interactive discovery
+interview and the design step behave identically.
+
+To develop or test locally without a marketplace, run Claude Code from the repo
+root with the plugin loaded directly:
+
+```bash
+claude --plugin-dir .
+```
+
+Then run `/reload-plugins` after edits to pick up changes.
+
 ## Usage
 
 A two-command workflow: first capture the requirements, then create the Presales Lite HLD.
