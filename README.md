@@ -45,7 +45,13 @@ From your working directory, run:
 /hld:requirements "a system that moderates uploaded product images for unsafe content at 2000 images per minute"
 ```
 
-This writes `requirements.md` in your current directory. Open it, confirm the inputs, and resolve the assumptions and critical questions before proceeding. The file distinguishes:
+This starts an interactive discovery interview. Instead of writing the file
+immediately, the skill asks one question at a time across six categories
+(business outcome, users, functional scope, scale, data & integrations,
+security & constraints), offering concrete options plus a "Don't know / not
+important yet" choice. Each answer is labeled **Confirmed**, **Assumption**, or
+**Unknown** — nothing becomes Confirmed unless you say it. After you approve the
+drafted brief, it writes `requirements.md`. The file distinguishes:
 - **Confirmed inputs** (facts supplied in the prompt)
 - **Assumptions** (explicit, reviewable working hypotheses)
 - **Critical questions** (discovery items that could materially change the design)
