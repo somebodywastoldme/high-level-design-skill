@@ -26,16 +26,17 @@ truth for the interview protocol.
 ### File structure (additions only)
 
 ```
-high-level-design-skill/
+high-level-design-skill/            # this dir is BOTH the Gemini extension AND the Claude plugin root
 ├── .claude-plugin/
-│   ├── plugin.json          # NEW — Claude plugin manifest
+│   ├── plugin.json          # NEW — Claude plugin manifest (name: "hld")
 │   └── marketplace.json     # NEW — repo acts as its own marketplace for GitHub install
 ├── gemini-extension.json    # unchanged (Gemini)
-├── commands/hld/
-│   ├── requirements.toml     # unchanged (Gemini)
-│   ├── requirements.md       # NEW — Claude twin, thin trigger
-│   ├── design.toml           # unchanged (Gemini)
-│   └── design.md             # NEW — Claude twin, thin trigger
+├── commands/
+│   ├── requirements.md       # NEW — Claude command (flat), -> /hld:requirements
+│   ├── design.md             # NEW — Claude command (flat), -> /hld:design
+│   └── hld/
+│       ├── requirements.toml # unchanged (Gemini) -> /hld:requirements
+│       └── design.toml       # unchanged (Gemini) -> /hld:design
 └── skills/ml-system-hld/     # SHARED — read by both platforms, unchanged
     ├── SKILL.md
     ├── assets/
@@ -43,20 +44,35 @@ high-level-design-skill/
         └── discovery-interview.md   # single source of truth for interview logic
 ```
 
+### Naming (verified against Claude Code plugin docs)
+
+- A Claude plugin's command/skill namespace **is the plugin name**. To produce
+  `/hld:requirements` and `/hld:design`, the plugin is named **`hld`**. (The
+  Gemini extension keeps its own name `hld-ml-designer`; the two identities are
+  independent.)
+- Claude plugin commands are **flat markdown files** in `commands/`; the filename
+  (minus `.md`) becomes the command name under the plugin namespace. So
+  `commands/requirements.md` -> `/hld:requirements`. They are NOT nested in a
+  `hld/` subfolder (nesting is the Gemini convention, not Claude's).
+
 ### Coexistence
 
 - Claude discovers `commands/` and `skills/` at the plugin root — exactly where
   they already live.
-- Gemini reads only `.toml` command files; Claude reads only `.md` command
-  files. Both formats live in `commands/hld/` without collision.
+- Gemini reads only `.toml` files under `commands/<group>/`; Claude reads only
+  `.md` files under `commands/`. The Gemini `.toml` files stay in `commands/hld/`;
+  the Claude `.md` files sit at `commands/` root. No collision, each platform
+  ignores the other's files.
 - `skills/ml-system-hld/` is not duplicated. Both platforms load the same
-  `SKILL.md` and `references/discovery-interview.md`.
+  `SKILL.md` and `references/discovery-interview.md`. Under the `hld` plugin the
+  skill is also reachable as `/hld:ml-system-hld`, but users interact through the
+  two commands.
 
 ## Claude command twins (thin triggers)
 
 Both `.md` commands delegate all depth to the shared skill.
 
-`commands/hld/requirements.md`:
+`commands/requirements.md`:
 
 ```markdown
 ---
@@ -73,7 +89,7 @@ answer Confirmed/Assumption/Unknown (never Confirmed unless I said it), and show
 directory ONLY after I explicitly approve the drafted brief. Presales Lite only.
 ```
 
-`commands/hld/design.md`:
+`commands/design.md`:
 
 ```markdown
 ---
@@ -95,19 +111,22 @@ one file; both platforms pick it up.
 
 Claude plugins install via a "marketplace." To give the audience the same
 one-line install as Gemini, the repo acts as its own marketplace via
-`.claude-plugin/marketplace.json`. Install becomes:
+`.claude-plugin/marketplace.json`, with the plugin's `source` set to `"./"`
+(the plugin lives at the repository root, which is also the marketplace root).
+Install becomes:
 
 ```
 /plugin marketplace add somebodywastoldme/high-level-design-skill
-/plugin install hld-ml-designer
+/plugin install hld@hld-designer
 ```
 
-`plugin.json` and `marketplace.json` reuse the identity already in
-`gemini-extension.json` (name `hld-ml-designer`, version, description).
+- `plugin.json`: `{ "name": "hld", "version": "0.1.0", "description": ..., "author": ... }`.
+- `marketplace.json`: `{ "name": "hld-designer", "owner": {...}, "plugins": [ { "name": "hld", "source": "./", "description": ... } ] }`.
+- `/plugin install hld@hld-designer` = install plugin `hld` from marketplace
+  `hld-designer`.
 
-**Manifest formats will be verified against current Claude Code plugin docs
-during implementation** (via WebFetch) before finalizing — the exact
-`marketplace.json` schema is load-bearing and must not rely on memory.
+Manifest formats above are verified against the current Claude Code plugin and
+marketplace reference docs (fetched during planning).
 
 ## Documentation
 
