@@ -31,6 +31,24 @@ unknowns, risks, or questions; do not silently fill them in.
 - [ ] Observability needs—signals, logs, metrics, tracing, and operational
   ownership—are addressed when relevant.
 
+## Topology & anti-pattern review
+
+Compose diagram edges from each component's **Typical interactions** in the
+component catalog, then run the [anti-pattern catalog](antipatterns.md) against
+the diagram before writing `hld.md`. On a match, apply the entry's Action:
+auto-fix (redraw and add "Applied pattern: <name>"), fix+note (redraw and add one
+assumption line), or flag-as-risk (leave and add a risk or open question). Do not
+present an auto-fix as a confirmed requirement.
+
+Actively check, do not assume:
+
+- [ ] No client writes or reads Object Storage or a database without an authenticated boundary (A1).
+- [ ] Every external actor passes API Gateway / Edge and Identity & Access (A2).
+- [ ] Model access is one boundary (Model API Proxy) with self-hosted models and external providers behind it — no proxy/model sibling split (B1) and no provider call bypassing the proxy (B2).
+- [ ] Every async consumer has a DLQ -> Review branch (C1).
+- [ ] Every datastore has an owning service (D1); every Cache has an owner and a source (D4).
+- [ ] The remaining entries (A3-A5, B3, C2-C3, D2-D3, E1-E4) have been considered and any match flagged.
+
 ## Visual composition
 
 - [ ] Mermaid is the only final diagram format.
