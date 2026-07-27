@@ -1,0 +1,13 @@
+{
+  "name": "hld-designer",
+  "owner": {
+    "name": "somebodywastoldme"
+  },
+  "plugins": [
+    {
+      "name": "hld",
+      "source": "./",
+      "description": "Interactive Presales Lite HLD designer: discovery interview then a vendor-neutral high-level design with a Mermaid diagram."
+    }
+  ]
+}
