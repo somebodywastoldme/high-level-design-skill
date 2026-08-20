@@ -1,0 +1,44 @@
+name: Publish skill packages
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the tagged source
+        uses: actions/checkout@v4
+
+      - name: Build Claude and Codex packages
+        run: ./scripts/build-demo-packages.sh
+
+      - name: Generate SHA-256 checksums
+        working-directory: dist
+        run: sha256sum hld-codex-plugin.zip ml-system-hld-claude.zip > SHA256SUMS.txt
+
+      - name: Create or update the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" \
+              dist/hld-codex-plugin.zip \
+              dist/ml-system-hld-claude.zip \
+              dist/SHA256SUMS.txt \
+              --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" \
+              dist/hld-codex-plugin.zip \
+              dist/ml-system-hld-claude.zip \
+              dist/SHA256SUMS.txt \
+              --generate-notes \
+              --title "HLD Solution Designer $GITHUB_REF_NAME"
+          fi
