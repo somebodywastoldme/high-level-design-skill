@@ -1,0 +1,28 @@
+{
+  "name": "hld",
+  "version": "0.1.0",
+  "description": "Turn a product or system idea into reviewed requirements and a vendor-neutral high-level design with Mermaid diagrams.",
+  "author": {
+    "name": "somebodywastoldme",
+    "url": "https://github.com/somebodywastoldme"
+  },
+  "homepage": "https://github.com/somebodywastoldme/high-level-design-skill",
+  "repository": "https://github.com/somebodywastoldme/high-level-design-skill",
+  "keywords": ["architecture", "hld", "presales", "mermaid", "ml", "ai"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "HLD Solution Designer",
+    "shortDescription": "Discovery and vendor-neutral architecture design",
+    "longDescription": "Run an interactive discovery interview, separate confirmed facts from assumptions and unknowns, and produce a decision-ready high-level design with a readable Mermaid architecture diagram.",
+    "developerName": "somebodywastoldme",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://github.com/somebodywastoldme/high-level-design-skill",
+    "defaultPrompt": [
+      "Interview me and prepare requirements for my system idea.",
+      "Create an HLD from the approved requirements.md.",
+      "Review this architecture and identify material gaps."
+    ],
+    "brandColor": "#4285F4"
+  }
+}
