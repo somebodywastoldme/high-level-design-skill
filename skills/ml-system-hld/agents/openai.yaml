@@ -1,0 +1,7 @@
+interface:
+  display_name: "HLD Solution Designer"
+  short_description: "Discovery and vendor-neutral architecture design"
+  default_prompt: "Use $ml-system-hld to interview me about a system idea and prepare a vendor-neutral high-level design."
+
+policy:
+  allow_implicit_invocation: true

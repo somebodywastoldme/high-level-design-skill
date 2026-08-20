@@ -4,6 +4,58 @@ A vendor-neutral Gemini CLI extension that turns a one-line product or system ne
 
 The skill separates confirmed inputs from assumptions and critical discovery questions, so the design remains useful without presenting unknowns as facts. Its diagrams are logical HLDs: they describe responsibilities and flows without selecting a cloud vendor or deployment-level implementation.
 
+## Five-minute demo setup
+
+The repository contains one shared HLD skill plus adapters for Gemini CLI,
+Claude Code, Claude Desktop/Web, and Codex. After installation, start with either:
+
+```text
+Interview me about a B2B contract-processing platform and prepare its requirements.
+```
+
+or, when `requirements.md` already exists:
+
+```text
+Create a vendor-neutral HLD from the approved requirements.md.
+```
+
+### Claude Desktop, Web, or Cowork
+
+Build the upload package once:
+
+```bash
+./scripts/build-demo-packages.sh
+```
+
+In Claude, open **Customize → Skills → + Create skill → Upload a skill** and
+select `dist/ml-system-hld-claude.zip`. Enable it and use either starter prompt
+above. Claude can invoke the skill from natural language; slash commands are not
+required in the graphical app.
+
+### Codex Desktop or CLI
+
+For a local demo checkout, install the shared skill into the Codex skills
+directory:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/ml-system-hld ~/.codex/skills/
+```
+
+Start a new Codex task, select **HLD Solution Designer** or invoke
+`$ml-system-hld`, and use either starter prompt above. The same installation is
+visible to Codex CLI and Codex Desktop.
+
+To build a distributable Codex plugin archive as well, run:
+
+```bash
+./scripts/build-demo-packages.sh
+```
+
+The resulting `dist/hld-codex-plugin.zip` contains the Codex plugin manifest and
+the shared skill. It is suitable for publishing through a Codex plugin
+marketplace; local demos can use the direct skill installation above.
+
 ## Install
 
 Install directly from GitHub:
