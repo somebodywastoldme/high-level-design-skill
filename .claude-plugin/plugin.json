@@ -1,6 +1,6 @@
 {
   "name": "hld",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate vendor-neutral Presales Lite High-Level Designs for ML/AI and general software/data systems, with an interactive discovery interview and Markdown + Mermaid output.",
   "author": {
     "name": "somebodywastoldme"

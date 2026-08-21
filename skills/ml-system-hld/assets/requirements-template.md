@@ -1,37 +1,38 @@
-# Discovery Brief: <system name>
+# Опис результатів дослідження: <назва системи>
 
-> **Claim ledger legend.** Every item below traces to a discovery-interview
-> answer. **Confirmed** = stated by the stakeholder. **Assumption** = inferred,
-> pending confirmation. **Unknown** = unresolved, tracked as an open question.
-> Nothing is Confirmed without the stakeholder's own words.
+> **Позначення реєстру тверджень.** Кожен пункт нижче має походити з відповіді,
+> отриманої під час інтерв'ю. **Підтверджено** = прямо зазначено зацікавленою
+> стороною. **Припущення** = зроблено висновок, що очікує підтвердження.
+> **Невідомо** = питання не вирішено й залишається відкритим. Нічого не можна
+> позначати як підтверджене без прямої заяви зацікавленої сторони.
 
-## 1. Business outcome and scope
-<confirmed outcome, scope, and logical system boundary>
+## 1. Бізнес-результат і межі
+<підтверджений результат, обсяг і логічна межа системи>
 
-## 2. Confirmed inputs
-<facts explicitly provided by the stakeholder — all **Confirmed**>
+## 2. Підтверджені вхідні дані
+<факти, прямо надані зацікавленою стороною — усі позначені як **Підтверджено**>
 
-## 3. Functional requirements
-<functional requirements derived only from confirmed inputs>
+## 3. Функціональні вимоги
+<функціональні вимоги, сформовані лише з підтверджених вхідних даних>
 
-## 4. Quality attributes / NFRs
-| Attribute | Confirmed target | Why it matters | Status |
+## 4. Атрибути якості / нефункціональні вимоги
+| Атрибут | Підтверджена ціль | Чому це важливо | Статус |
 |---|---|---|---|
-| Latency | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Throughput/volume | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Freshness | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Availability | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Consistency | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Access control | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Privacy/compliance | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Integration constraints | <target or question> | <impact> | Confirmed / Assumption / Unknown |
-| Cost/budget | <target or question> | <impact> | Confirmed / Assumption / Unknown |
+| Затримка | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Пропускна здатність / обсяг | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Актуальність даних | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Доступність | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Узгодженість | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Контроль доступу | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Конфіденційність / відповідність вимогам | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Інтеграційні обмеження | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
+| Вартість / бюджет | <ціль або питання> | <вплив> | Підтверджено / Припущення / Невідомо |
 
-## 5. Assumptions to validate
-<inferred details labeled **Assumption**, each stated for the stakeholder to confirm>
+## 5. Припущення для перевірки
+<виведені деталі з позначкою **Припущення**, кожна сформульована для підтвердження зацікавленою стороною>
 
-## 6. Critical discovery questions
-<unresolved items labeled **Unknown**, phrased as the highest-impact open questions>
+## 6. Критичні відкриті питання
+<невирішені пункти з позначкою **Невідомо**, сформульовані як найважливіші відкриті питання>
 
-## 7. Out of scope
-Low-level design, cloud deployment topology, and cloud-vendor mapping.
+## 7. Поза межами
+Низькорівневий дизайн, топологія розгортання у хмарі та прив'язка до конкретного хмарного провайдера.

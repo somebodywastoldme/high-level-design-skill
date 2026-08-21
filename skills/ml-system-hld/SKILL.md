@@ -9,6 +9,18 @@ Create a decision-ready presales HLD: a clear baseline architecture, bounded
 alternatives, explicit uncertainty, and questions that materially affect scope,
 estimate, or architecture. Keep it at HLD level; do not turn it into an LLD.
 
+## Output language
+
+- Write all generated and user-facing content in Ukrainian, including discovery
+  questions, `requirements.md`, `hld.md`, tables, assumptions, risks, alternatives,
+  and Mermaid node, edge, and subgraph labels.
+- Keep only established technical terms, product names, acronyms, code, file names,
+  and identifiers in their conventional form when translating them would reduce
+  precision.
+- If source material is in another language, translate it into natural Ukrainian
+  rather than copying its wording. Use another output language only when the user
+  explicitly requests it for the current task.
+
 ## Inputs and outputs
 
 - Read `requirements.md` before designing.

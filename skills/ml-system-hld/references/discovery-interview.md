@@ -26,15 +26,23 @@ silently — say when a category has no open questions.
 
 ## Asking one question
 
-Ask one question at a time. Offer 3-4 concrete options plus an explicit
-"Don't know / not important yet" option. Use this format:
+Ask one question at a time. Prefer the host's native structured-choice UI so
+the user can answer by clicking a button:
 
-    [Category N/6 · <name>]
-    <question>
-      A) <concrete option>
-      B) <concrete option>
-      C) <concrete option>
-      D) Don't know / not important yet
+- In Codex, use `request_user_input` when it is available.
+- In Claude Code, use `AskUserQuestion` when it is available.
+- In another host, use its equivalent interactive question or choice tool.
+
+Send one question per tool call. Provide 2-3 short, mutually exclusive options
+that fit the host tool's limits. Make the recommended option first and explain
+the effect of each choice in one short sentence. Include **Не знаю / поки
+неважливо** as an explicit option when the tool has room; otherwise rely on the
+tool's free-form **Інше** option. Write the question, header, option labels, and
+descriptions in Ukrainian.
+
+Do not print an A/B/C/D list in chat before or after opening the native choice
+UI. If no interactive-choice tool is available, fall back to a concise numbered
+list in Ukrainian and accept either a number or free-form answer.
 
 ## Labeling each answer
 

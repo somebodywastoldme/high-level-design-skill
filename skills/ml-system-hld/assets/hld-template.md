@@ -1,39 +1,39 @@
-# High-Level Design: <system name>
-## 1. Executive summary
-<Presales Lite recommendation, business outcome, and logical architecture pattern>
+# Високорівневий дизайн: <назва системи>
+## 1. Резюме
+<рекомендація Presales Lite, бізнес-результат і логічний архітектурний шаблон>
 
-## 2. Confirmed inputs and assumptions
-<Separate confirmed inputs from assumptions and unknowns>
+## 2. Підтверджені вхідні дані та припущення
+<відокремити підтверджені вхідні дані від припущень і невідомого>
 
-## 3. Recommended architecture
-<One baseline using logical component names only; explain the pattern and architectural drivers>
+## 3. Рекомендована архітектура
+<один базовий варіант лише з логічними назвами компонентів; пояснити шаблон і архітектурні чинники>
 
-## 4. Architecture diagram
-### Diagram composition
-Final diagram format: Mermaid only.
+## 4. Архітектурна діаграма
+### Композиція діаграми
+Фінальний формат діаграми: лише Mermaid.
 
-Primary flow: <left-to-right architectural story>
+Основний потік: <архітектурний сценарій зліва направо>
 
-Focused second Mermaid view: <permitted only when the primary HLD has >16 logical blocks or >2 exception branches; otherwise omit>
+Друга сфокусована Mermaid-діаграма: <дозволена лише тоді, коли основна HLD має понад 16 логічних блоків або понад 2 гілки винятків; інакше пропустити>
 
 ```mermaid
 flowchart LR
-    Input[Logical input] --> Processing[Logical processing component]
-    Processing --> Consumer[Logical consumer]
+    Input[Логічне джерело даних] --> Processing[Логічний компонент обробки]
+    Processing --> Consumer[Логічний споживач]
 ```
 
-## 5. Key decisions and trade-offs
-<Key decisions, drivers, and trade-offs>
+## 5. Ключові рішення та компроміси
+<ключові рішення, чинники та компроміси>
 
-## 6. Requirements → design rationale
-| Requirement | Design mechanism | Status / caveat |
+## 6. Обґрунтування зв'язку вимог із дизайном
+| Вимога | Механізм дизайну | Статус / застереження |
 |---|---|---|
-| <requirement> | <logical component or mechanism> | Confirmed / Assumption / Unknown |
+| <вимога> | <логічний компонент або механізм> | Підтверджено / Припущення / Невідомо |
 
-## 7. Discovery questions and risks
-<Highest-impact questions and risks affecting the recommendation>
+## 7. Відкриті питання та ризики
+<найважливіші питання й ризики, що впливають на рекомендацію>
 
-## 8. Optional alternatives
-| Alternative | Prefer it when | Trade-off |
+## 8. Необов'язкові альтернативи
+| Альтернатива | Коли варто обрати | Компроміс |
 |---|---|---|
-| <conditional alternative; include at most two> | <condition> | <trade-off> |
+| <умовна альтернатива; додати не більше двох> | <умова> | <компроміс> |

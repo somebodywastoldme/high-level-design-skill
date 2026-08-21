@@ -1,7 +1,7 @@
 interface:
-  display_name: "HLD Solution Designer"
-  short_description: "Discovery and vendor-neutral architecture design"
-  default_prompt: "Use $ml-system-hld to interview me about a system idea and prepare a vendor-neutral high-level design."
+  display_name: "Проєктувальник HLD"
+  short_description: "Дослідження та вендоронезалежний дизайн архітектури"
+  default_prompt: "Використай $ml-system-hld, щоб провести інтерв'ю про ідею системи та підготувати вендоронезалежний високорівневий дизайн українською мовою."
 
 policy:
   allow_implicit_invocation: true

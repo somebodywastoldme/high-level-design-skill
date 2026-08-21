@@ -6,8 +6,12 @@ Activate the ml-system-hld skill. Do NOT write any file yet. Conduct the
 interactive discovery interview defined in
 skills/ml-system-hld/references/discovery-interview.md:
 
-- Ask one question at a time across the six-category frame, offering concrete
-  options plus a "Don't know / not important yet" option.
+- Ask one question at a time across the six-category frame. Use the host's
+  native interactive choice tool (`request_user_input` in Codex or
+  `AskUserQuestion` in Claude Code) so the user can click an option. Keep every
+  UI label and description in Ukrainian. Do not duplicate choices as A/B/C/D
+  text in chat. Fall back to a numbered text list only if no choice tool is
+  available.
 - Label every answer Confirmed, Assumption, or Unknown. Never mark anything
   Confirmed unless the user stated it in their own words. Speak every Assumption
   aloud so the user can correct it.
